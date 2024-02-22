@@ -1,8 +1,28 @@
+/* Amelia Dahn, 2/22, COP 3502
+This code uses binary search and recurssion to identify the index of a given value in an array of sorted integers
+*/
+
 #include <stdio.h>
+#include <stdlib.h>
 
 int search(int numbers[], int low, int high, int value) 
 {
+	if (low<high){//value is present
+	int middle = (low+high)/2;
+
+	if (value > numbers[middle]){//if value is greater than middle
+		return search(numbers, middle + 1, high, value);
+	}
+	else if (value < numbers[middle]){//if value is less than middle
+		return search(numbers, low, middle - 1, value);
+	}
+	else if(value == numbers[middle]){//if value equals middle
+		return middle;
+	}
+	}
 	return -1;
+
+	
 }
 
 void printArray(int numbers[], int sz)
